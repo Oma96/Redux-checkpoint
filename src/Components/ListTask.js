@@ -1,13 +1,18 @@
-import React from 'react'
-import {useSelector } from 'react-redux'
+import React,{useEffect} from 'react'
+import {useSelector,useDispatch } from 'react-redux'
 import { Task } from './Task'
 
-export const ListTask = () => {
-    const list =useSelector(state=>state.todos)
+import { filteredTab } from '../Redux/action'
 
-    return (
+export const ListTask = () => {
+    const dispatch= useDispatch()
+    const list =useSelector(state=>state.todos)
+    const filter =useSelector(state =>state.Filter)   
+    const filteredTodo=useSelector(state=>  state.filteredtodo)
+    useEffect(()=> dispatch (filteredTab()) , [filter, list])
+    return(
         <div>
-            {list.map(el=> <Task task ={el}/>)}
+            {filteredTodo.map(el=> <Task task ={el}/>)}
             
         </div>
     )

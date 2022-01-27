@@ -1,3 +1,6 @@
 export const add= "add"
 export const Delete = "Delete"
 export const completed ="completed"
+export const edit ="edit"
+export const Filter="Filter"
+export const filteredTodo="filteredTodo"
